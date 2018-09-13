@@ -1,3 +1,5 @@
+# This fork adds one feature: the stepper motor is powered off when it is finished rotating, to save about 60mA. This is useful for intermittent applications
+
 # Arduino-and-ULN2003-Stepper-Motor-Driver
 Using a ULN2003 Stepper Motor Driver with a 28BYJ-48 motor
 
