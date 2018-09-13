@@ -1,5 +1,5 @@
 #include <Arduino.h>
-#include <StepperMotor.h>
+#include <StepperMotorFork.h>
 
 StepperMotor::StepperMotor(int In1, int In2, int In3, int In4){
     // Record pin numbers in the inputPins array
@@ -49,4 +49,15 @@ void StepperMotor::step(int noOfSteps){
             }
         } 
     }
+    /* 
+       The following loop sets all the inputPins LOW after the requested number of steps.
+       This prevents the motor from staying powered after it is done rotating.
+       This is useful for projects that are battery-powered and the stepper motor is idle much of the time.
+       (80 mA total current drawn instead of 250mA)
+       
+    */
+    delay(duration);
+    for(int inputCount = 0; inputCount < 4; inputCount++){
+		digitalWrite(this->inputPins[inputCount], LOW);
+	}
 }
